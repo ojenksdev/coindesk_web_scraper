@@ -1,3 +1,5 @@
+# Web scraper that pulls frontpage articles from CoinDesk.com (cryptocurrency site) and saves them to a CSV file.
+
 from bs4 import BeautifulSoup
 import requests
 import csv
