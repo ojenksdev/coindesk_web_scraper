@@ -9,7 +9,7 @@ soup = BeautifulSoup(source, 'lxml')
 
 csv_file = open("coindesk_scrape.csv", "w")
 csv_writer = csv.writer(csv_file)
-csv_writer.writerow(['Title', 'Date','Summary'])
+csv_writer.writerow(['Title', 'Date','Summary', 'URL'])
 
 for article in soup.find_all('a', class_="stream-article"):
 
@@ -21,10 +21,13 @@ for article in soup.find_all('a', class_="stream-article"):
 
     summary = article.find('p').text
     print(summary)
+    
+    web_link = article.get('href')
+    print(web_link)
 
     print()
 
-    csv_writer.writerow([title, article_date, summary])
+    csv_writer.writerow([title, article_date, summary, web_link])
 
 csv_file.close()
 
